@@ -4,7 +4,7 @@ IMAGE=spring_cloud_app
 
 docker stop myapp
 
-mvn package -e -X docker:build -DskipTest
+#mvn package -e -X docker:build -DskipTest
 
 sleep 3s
 
