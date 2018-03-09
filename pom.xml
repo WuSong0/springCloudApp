@@ -6,6 +6,7 @@
         <artifactId>springCloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <packaging>jar</packaging>
     <artifactId>spring_cloud_app</artifactId>
 
 
@@ -127,31 +128,34 @@
                     <showWarnings>true</showWarnings>
                 </configuration>
             </plugin>
+
+            <!-- 镜像构建 -->
+            <!-- https://github.com/spotify/docker-maven-plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.11</version>
+                <configuration>
+                    <imageName>${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>*.jar</include>
+                        </resource>
+                    </resources>
+                    <!--<serverId>aliyun-docker-hub</serverId>
+                    <registryUrl>registry-internal.cn-hangzhou.aliyuncs.com</registryUrl>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>-->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
-    <!-- 镜像构建 -->
-    <!-- https://github.com/spotify/docker-maven-plugin -->
-    <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
-        <version>0.4.11</version>
-        <configuration>
-            <imageName>${project.artifactId}</imageName>
-            <dockerDirectory>src/main/docker</dockerDirectory>
-            <resources>
-                <resource>
-                    <targetPath>/</targetPath>
-                    <directory>${project.build.directory}</directory>
-                    <include>*.jar</include>
-                </resource>
-            </resources>
-            <!--<serverId>aliyun-docker-hub</serverId>
-            <registryUrl>registry-internal.cn-hangzhou.aliyuncs.com</registryUrl>
-            <imageTags>
-                <imageTag>${project.version}</imageTag>
-                <imageTag>latest</imageTag>
-            </imageTags>-->
-        </configuration>
-    </plugin>
+
+
 </project>
