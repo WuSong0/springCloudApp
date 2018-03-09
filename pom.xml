@@ -7,11 +7,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>-->
     <groupId>com.song</groupId>
-    <artifactId>springCloud</artifactId>
+    <artifactId>spring_cloud_app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <artifactId>spring_cloud_app</artifactId>
 
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Dalston.SR2</version>
+    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

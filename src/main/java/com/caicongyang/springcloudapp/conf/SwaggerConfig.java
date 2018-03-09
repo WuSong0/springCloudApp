@@ -18,8 +18,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Value("${swagger.ui.enable}") //该配置项在配置中心管理
-    private boolean environmentSpecificBooleanFlag;
+    //@Value("${swagger.ui.enable}") //该配置项在配置中心管理
+    private boolean environmentSpecificBooleanFlag =true;
 
     @Bean
     public Docket docketFactory() {
